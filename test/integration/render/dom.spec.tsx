@@ -174,7 +174,7 @@ describe('dom handling', () => {
       'Component',
       () => 
       <local.Observer render={state =>
-        <input value={state} onchange={(evt: KeyboardEvent<HTMLInputElement>) => local.dispatch(evt.target.value)} />
+        <input value={state} onchange={(evt: KeyboardEvent<HTMLInputElement>) => local.dispatch(evt.currentTarget.value)} />
       } />,
     );
 
@@ -209,7 +209,7 @@ describe('dom handling', () => {
       'Component',
       () =>
         <local.Observer render={state =>
-          <input value={state} onchange={(evt: KeyboardEvent<HTMLInputElement>) => local.dispatch(evt.target.value)} />
+          <input value={state} onchange={(evt: KeyboardEvent<HTMLInputElement>) => local.dispatch(evt.currentTarget.value)} />
         } />,
     );
 
@@ -233,7 +233,7 @@ describe('dom handling', () => {
       'Component',
       () =>
         <local.Observer render={state =>
-          <input value={state} onchange={(evt: KeyboardEvent<HTMLInputElement>) => local.dispatch(evt.target.value)} />
+          <input value={state} onchange={(evt: KeyboardEvent<HTMLInputElement>) => local.dispatch(evt.currentTarget.value)} />
         } />,
     );
 

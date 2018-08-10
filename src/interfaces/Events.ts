@@ -3,16 +3,19 @@
 const nothing = null;
 export { nothing };
 
-interface PlusnewKeyboardEvent<target extends HTMLElement> extends KeyboardEvent {
+interface PlusnewKeyboardEvent<currentTarget extends Element, target extends Element = Element> extends KeyboardEvent {
   target: target;
+  currentTarget: currentTarget;
 }
 
-interface PlusnewMouseEvent<target extends HTMLElement> extends KeyboardEvent {
+interface PlusnewMouseEvent<currentTarget extends Element, target extends Element = Element> extends KeyboardEvent {
   target: target;
+  currentTarget: currentTarget;
 }
 
-interface PlusnewTouchEvent<target extends HTMLElement> extends TouchEvent {
+interface PlusnewTouchEvent<currentTarget extends Element, target extends Element = Element> extends TouchEvent {
   target: target;
+  currentTarget: currentTarget;
 }
 
 export {

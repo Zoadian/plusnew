@@ -13,7 +13,7 @@ describe('firing input events', () => {
     const local = store('foo', (state, newValue: string) => newValue);
 
     const change = jasmine.createSpy('change', (evt: KeyboardEvent<HTMLInputElement>) => {
-      local.dispatch(evt.target.value);
+      local.dispatch(evt.currentTarget.value);
     }).and.callThrough();
 
     const Component = component(
@@ -25,7 +25,7 @@ describe('firing input events', () => {
 
     const input = container.childNodes[0] as HTMLInputElement;
     input.value = 'bar';
-    const event = new CustomEvent('input', { detail: { target: input } });
+    const event = new CustomEvent('input', { detail: { currentTarget: input } });
     input.dispatchEvent(event);
 
     expect(change.calls.count()).toEqual(1);
@@ -33,7 +33,7 @@ describe('firing input events', () => {
     expect(local.getCurrentState()).toBe('bar');
 
     input.value = 'barbar';
-    const eventTwo = new CustomEvent('change', { detail: { target: input } });
+    const eventTwo = new CustomEvent('change', { detail: { currentTarget: input } });
     input.dispatchEvent(eventTwo);
 
     expect(change.calls.count()).toEqual(2);
@@ -45,7 +45,7 @@ describe('firing input events', () => {
     const local = store('foo', (state, newValue: string) => newValue);
 
     const change = jasmine.createSpy('changex', (evt: KeyboardEvent<HTMLInputElement>) => {
-      local.dispatch(evt.target.value);
+      local.dispatch(evt.currentTarget.value);
     }).and.callThrough();
 
     const Component = component(
@@ -57,14 +57,14 @@ describe('firing input events', () => {
 
     const input = container.childNodes[0] as HTMLInputElement;
     input.value = 'bar';
-    const event = new CustomEvent('input', { detail: { target: input } });
+    const event = new CustomEvent('input', { detail: { currentTarget: input } });
     input.dispatchEvent(event);
 
     expect(change.calls.count()).toEqual(1);
     expect(change).toHaveBeenCalledWith(event);
 
     input.value = 'barbar';
-    const eventTwo = new CustomEvent('change', { detail: { target: input } });
+    const eventTwo = new CustomEvent('change', { detail: { currentTarget: input } });
     input.dispatchEvent(eventTwo);
 
     expect(change.calls.count()).toEqual(2);
@@ -76,7 +76,7 @@ describe('firing input events', () => {
     const local = store(true, (state, newValue: boolean) => newValue);
 
     const change = jasmine.createSpy('change', (evt: KeyboardEvent<HTMLInputElement>) => {
-      local.dispatch(evt.target.checked);
+      local.dispatch(evt.currentTarget.checked);
     }).and.callThrough();
 
     const Component = component(
